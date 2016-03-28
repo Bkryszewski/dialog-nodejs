@@ -4,13 +4,13 @@
         <folder label="Main">
             <output>
                 <prompt selectionType="RANDOM">
-                    <item>Hi, I'm Watson! I can help you order a pizza, what size would you like?</item>
+                    <item>Hi, I'm VICKI! I can help you get information or to file a complaint?</item>
                 </prompt>
                 <goto ref="getUserInput_2442994"/>
             </output>
             <output>
                 <prompt selectionType="SEQUENTIAL">
-                    <item>What size would you like?</item>
+                    <item>Which would you like help with?</item>
                 </prompt>
                 <getUserInput id="getUserInput_2442994">
                     <search ref="folder_2442998"/>
@@ -31,7 +31,7 @@
             <folder label="Live Content" id="folder_2442998">
                 <input>
                     <grammar>
-                        <item>What do you have?</item>
+                        <item>Can you help with abandoned vehicles?</item>
                         <item>$ What * do you have</item>
                         <item>$ what * do you carry</item>
                         <item>$ What * is there</item>
@@ -41,105 +41,76 @@
                     </grammar>
                     <input>
                         <grammar>
-                            <item>$ (Size)</item>
-                            <item>size</item>
-                            <item>sizes</item>
+                            <item>$ (Type)</item>
+                            <item>type</item>
+                            <item>types</item>
                         </grammar>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>We have small, medium, large, and extra large</item>
+                                <item>We have noise, garbage collection, abandonded vehicles</item>
                             </prompt>
                         </output>
                     </input>
                     <input>
                         <grammar>
-                            <item>$ (Toppings)</item>
-                            <item>$ topping</item>
-                            <item>$ toppings</item>
+                            <item>$ (Complaints)</item>
+                            <item>$ complaint</item>
+                            <item>$ complaints</item>
                         </grammar>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>We have cheese, pepperoni, olives, mushrooms, etc.</item>
+                                <item>We have noise, garbage collection, abandonded vehicles</item>
                             </prompt>
                         </output>
                     </input>
                     <output>
                         <prompt selectionType="RANDOM">
-                            <item>We have small, medium, large and extra large, as well as all the normal toppings.</item>
+                            <item>I can also transfer this call to a live agent if necessary.</item>
                         </prompt>
                     </output>
                 </input>
                 <input>
                     <grammar>
-                        <item>I want a small pizza</item>
-                        <item>$ (Size)={size}</item>
+                        <item>I want to file a complaint</item>
+                        <item>$ (type)={type}</item>
                     </grammar>
                     <input>
                         <grammar>
-                            <item>No toppings</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3}</item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3}</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3}</item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3}</item>
-                            <item>$ (Toppings)={topping1} * (Toppings)={topping2} </item>
-                            <item>$ (Toppings)={topping1} (Toppings)={topping2}</item>
-                            <item>$ (Toppings)={topping1}</item>
+                            <item>No complaint</item>
+                            <item>$ (Complaints)={complaint1} * (Complaints)={complaint2} * (Complaints)={complaint3} * (Complaints)={complaint4}</item>
+                           
                         </grammar>
-                        <action varName="size" operator="SET_TO">{size.value:main}</action>
+                        <action varName="type" operator="SET_TO">{type.value:main}</action>
                         <goto ref="output_2469801"/>
                     </input>
                     <output>
                         <prompt/>
-                        <action varName="size" operator="SET_TO">{size.value:main}</action>
+                        <action varName="type" operator="SET_TO">{type.value:main}</action>
                         <output>
                             <prompt selectionType="RANDOM">
-                                <item>What toppings are you in the mood for? (Limit 4)</item>
+                                <item>What kind of complaint would you like to file? </item>
                             </prompt>
                             <getUserInput>
                                 <input>
                                     <grammar>
                                     <item>No toppings</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} * (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3} (Toppings)={topping4}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} * (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} * (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2} (Toppings)={topping3}</item>
-                                    <item>$ (Toppings)={topping1} * (Toppings)={topping2} </item>
-                                    <item>$ (Toppings)={topping1} (Toppings)={topping2}</item>
-                                    <item>$ (Toppings)={topping1}</item>
+                                    <item>$ (Complaints)={complaint1}</item>
                                     </grammar>
                                     <output id="output_2469801">
                                     <prompt selectionType="RANDOM"/>
-                                    <action varName="topping1" operator="SET_TO">{topping1.value:main}</action>
-                                    <action varName="topping2" operator="SET_TO">{topping2.value:main}</action>
-                                    <action varName="topping3" operator="SET_TO">{topping3.value:main}</action>
-                                    <action varName="topping4" operator="SET_TO">{topping4.value:main}</action>
+                                    <action varName="complaint1" operator="SET_TO">{complaint1.value:main}</action>
+                                    <action varName="complaint2" operator="SET_TO">{complaint2.value:main}</action>
+                                    <action varName="complaint3" operator="SET_TO">{complaint3.value:main}</action>
+                                    <action varName="complaint4" operator="SET_TO">{complaint4.value:main}</action>
                                     <output id="output_2469831">
                                     <prompt selectionType="RANDOM">
-                                    <item>Do you prefer pickup or delivery?</item>
+                                    <item>Can I help you with anything else?</item>
                                     </prompt>
                                     <getUserInput>
                                     <input>
                                     <grammar>
-                                    <item>I prefer pickup</item>
-                                    <item>$ pickup</item>
-                                    <item>$ pick up</item>
-                                    <item>$ pick it up</item>
+                                    <item> No, thank you</item>
+                                    <item> Yes</item>
                                     </grammar>
                                     <action
                                     varName="method" operator="SET_TO">pickup</action>
